@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin · HSU Resource Centre</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin">
+
+  <!-- Login -->
+  <section id="login" class="login" hidden>
+    <div class="login-card">
+      <div class="login-logos">
+        <img class="hsu" src="assets/hsu-logo.png" alt="Hindu Student Union logo" width="46" height="64">
+        <img class="uop" src="assets/uop-logo.png" alt="University of Peradeniya logo" width="56" height="56">
+      </div>
+      <h1>Admin sign in</h1>
+      <p class="muted">For HSU committee members who manage the resource centre.</p>
+      <form id="loginForm" class="stack">
+        <label>Email <input name="email" type="email" autocomplete="username" required></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+        <p class="form-msg" id="loginMsg" role="alert"></p>
+        <button class="btn primary wide" type="submit">Sign in</button>
+      </form>
+      <p class="muted small"><a href="index.html">Back to the public site</a></p>
+    </div>
+  </section>
+
+  <!-- App -->
+  <div id="app" hidden>
+    <header class="topbar">
+      <a class="brand" href="admin.html">
+        <span class="brand-logos">
+        <img class="hsu" src="assets/hsu-logo.png" alt="Hindu Student Union logo" width="33" height="46">
+        <span class="sep" aria-hidden="true"></span>
+        <img class="uop" src="assets/uop-logo.png" alt="University of Peradeniya logo" width="40" height="40">
+      </span>
+        <span><strong>Resource Centre admin</strong><small>Hindu Student Union</small></span>
+      </a>
+      <div class="row center">
+        <span class="muted small" id="who"></span>
+        <a class="btn small" href="index.html" target="_blank" rel="noopener">View site</a>
+        <button class="btn small" id="logout" type="button">Sign out</button>
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <aside class="sidebar" aria-label="Categories">
+        <div class="sidebar-head">
+          <button class="link-btn" type="button" data-act="home">All subjects</button>
+          <button class="btn small primary" type="button" data-act="add-root">New subject</button>
+        </div>
+        <nav id="tree" class="tree"></nav>
+        <div class="side-foot">
+          <button class="side-link" type="button" data-act="settings" id="settingsLink">Site text and picture</button>
+        </div>
+      </aside>
+      <main id="panel" class="panel"></main>
+    </div>
+  </div>
+
+  <!-- Category dialog -->
+  <dialog id="catDlg" class="form-dlg" aria-labelledby="catDlgTitle">
+    <form id="catForm" class="stack">
+      <h2 id="catDlgTitle">New subject</h2>
+      <label>Name <input name="name" required maxlength="120" placeholder="e.g. Physics, Unit 3 – Mechanics, Past papers"></label>
+      <label>Icon <span class="muted">(optional emoji)</span> <input name="icon" maxlength="8" placeholder="⚛️"></label>
+      <label>Description <span class="muted">(optional)</span> <textarea name="description" rows="3"></textarea></label>
+      <label>Place it inside <select name="parent_id"></select></label>
+      <p class="form-msg" id="catMsg" role="alert"></p>
+      <div class="dlg-actions">
+        <button class="btn" type="button" data-close>Cancel</button>
+        <button class="btn primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Resource dialog -->
+  <dialog id="resDlg" class="form-dlg" aria-labelledby="resDlgTitle">
+    <form id="resForm" class="stack">
+      <h2 id="resDlgTitle">Add resource</h2>
+      <fieldset class="kinds">
+        <legend>Type</legend>
+        <label><input type="radio" name="kind" value="pdf" checked><span>PDF upload</span></label>
+        <label><input type="radio" name="kind" value="file"><span>Other file</span></label>
+        <label><input type="radio" name="kind" value="drive"><span>Google Drive link</span></label>
+        <label><input type="radio" name="kind" value="youtube"><span>YouTube video</span></label>
+        <label><input type="radio" name="kind" value="link"><span>Website link</span></label>
+      </fieldset>
+
+      <div id="fileField">
+        <label>File <input name="files" type="file"></label>
+        <p class="hint" id="fileHint"></p>
+      </div>
+      <div id="urlField">
+        <label>Link <input name="url" type="url" placeholder="https://"></label>
+        <p class="hint" id="urlHint"></p>
+      </div>
+
+      <label id="titleField">Title <input name="title" maxlength="200" placeholder="e.g. 2023 A/L Chemistry Paper II"></label>
+      <label>Description <span class="muted">(optional)</span> <textarea name="description" rows="2"></textarea></label>
+      <div class="two">
+        <label>Year <span class="muted">(optional)</span> <input name="year" type="number" min="1980" max="2100" inputmode="numeric"></label>
+        <label>Medium <select name="medium"><option value="">Not set</option><option>Tamil</option><option>English</option><option>Sinhala</option></select></label>
+      </div>
+      <label>Category <select name="category_id" required></select></label>
+      <label class="check"><input type="checkbox" name="is_published" checked> Show on the public site</label>
+      <p class="form-msg" id="resMsg" role="alert"></p>
+      <div class="dlg-actions">
+        <button class="btn" type="button" data-close>Cancel</button>
+        <button class="btn primary" type="submit" id="resSave">Save resource</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

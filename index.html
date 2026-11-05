@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A/L Resource Centre | Hindu Student Union, University of Peradeniya</title>
+  <meta name="description" content="Free A/L past papers, notes, seminar videos and links from the Hindu Student Union, University of Peradeniya.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#view">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="brand-logos">
+        <img class="hsu" src="assets/hsu-logo.png" alt="Hindu Student Union logo" width="33" height="46">
+        <span class="sep" aria-hidden="true"></span>
+        <img class="uop" src="assets/uop-logo.png" alt="University of Peradeniya logo" width="40" height="40">
+      </span>
+      <span><strong data-set="brand_name">Hindu Student Union</strong><small data-set="brand_sub">University of Peradeniya</small></span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#/">Subjects</a>
+      <a href="#/about">About</a>
+    </nav>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logos">
+          <img class="hsu" src="assets/hsu-logo.png" alt="" width="31" height="44">
+          <img class="uop" src="assets/uop-logo.png" alt="" width="44" height="44">
+        </div>
+        <p><strong data-set="brand_name">Hindu Student Union</strong><br><span class="muted" data-set="brand_sub">University of Peradeniya</span></p>
+      </div>
+      <p class="muted" data-set="footer_note">Free for every A/L student. Share it with your friends.</p>
+    </div>
+  </footer>
+
+  <dialog id="player" aria-labelledby="playerTitle">
+    <div class="player-bar">
+      <h2 id="playerTitle"></h2>
+      <button class="btn small" id="playerClose" type="button">Close</button>
+    </div>
+    <div class="player-frame"><iframe title="Video player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
