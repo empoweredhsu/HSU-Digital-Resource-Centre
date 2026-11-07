@@ -43,7 +43,8 @@ function siteName() { return S.settings.brand_name || 'HSU Peradeniya'; }
 
 function heroVisual() {
   const p = S.settings.hero_image_path;
-  return p ? `<img class="hero-img" src="${esc(publicFileUrl(p))}" alt="">` : kolamSVG();
+  const inner = p ? `<img class="hero-img" src="${esc(publicFileUrl(p))}" alt="">` : kolamSVG();
+  return `<div class="hero-visual">${inner}</div>`;
 }
 
 
@@ -125,6 +126,7 @@ async function renderHome() {
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
+          <p class="hero-ta" lang="ta">இந்து மாணவர் சங்கம்<br>பேராதனைப் பல்கலைக்கழகம்</p>
           <h1>${esc(S.settings.hero_title)}</h1>
           ${S.settings.hero_text ? `<p class="lede">${esc(S.settings.hero_text)}</p>` : ''}
           ${searchForm()}
