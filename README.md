@@ -25,7 +25,7 @@ js/app.js           public site logic
 js/admin.js         admin logic
 supabase/schema.sql database tables, security rules and storage bucket
 supabase/update-1-site-settings.sql  only for databases set up before the site settings feature
-assets/             HSU and university logos, favicon
+assets/             HSU and university logos, favicon, mandala.svg (background pattern)
 ```
 
 ## Setup (about 15 minutes)
@@ -74,7 +74,7 @@ Sign in at `admin.html`, click **New subject** and add Physics, Chemistry, Biolo
 - **Free plan limits:** 1 GB of file storage and 50 MB per file. Put large files (big scanned paper bundles) in Google Drive and add them as Drive links. Remember to set Drive sharing to "Anyone with the link".
 - **Pausing:** Supabase may pause free projects that have no activity for a while. If that happens, open the Supabase dashboard and click Restore.
 - **Hidden resources:** untick "Show on the public site" to prepare something before releasing it.
-- **Changing text and the home picture:** in the admin panel, open **Site text and picture** (bottom of the left sidebar). You can change the home page title and text, the picture beside the title, the About page, the contact email, the name in the top bar and the footer note. Colours are at the top of `css/style.css`.
+- **Changing text and the home picture:** in the admin panel, open **Site text and picture** (bottom of the left sidebar). You can change the home page title and text, the picture beside the title, the About page, the contact email, the name in the top bar and the footer note. Colours are at the top of `css/style.css`. The Tamil union name (home page), the verse and the committee line (footer, `index.html`) are fixed text: edit them in the files.
 
 ## Updating from an earlier version
 
